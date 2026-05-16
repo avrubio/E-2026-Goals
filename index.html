@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edwin Allen – SMART Goals</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0A0A0F; color: #E8E4DC; font-family: Georgia, serif; }
+    button:focus { outline: none; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+const goals = [
+{
+id: 1, emoji: “🔌”, category: “API Fluency”, color: “#00C9A7”,
+title: “Showcase & Deepen API Expertise”, timeline: “Weeks 1–3”,
+pillars: {
+S: “You already have real Apigee + GCP experience from GE Aerospace — now make it visible. Build 2 new public API projects using tools you know (Postman, OAuth, REST) plus one new integration (e.g. Twilio or Stripe). Write clean READMEs and push everything to GitHub.”,
+M: “2 new GitHub repos with documented API integrations. Updated GitHub profile pinning these + your GE Aerospace work. At least 1 project includes authentication (OAuth/API keys) and error handling.”,
+A: “You’re not starting from zero — you resolved 15–20 API issues weekly at GE. This is about surfacing what you already know in a portfolio-visible way. 1 hr/day is enough.”,
+R: “TSE interviewers will ask you to walk through a debugging scenario. Having live, documented projects on GitHub means you can show — not just tell — your API troubleshooting process.”,
+T: “Both projects live and pinned on GitHub by end of Week 3.”,
+},
+},
+{
+id: 2, emoji: “🏗️”, category: “Fullstack Project”, color: “#6C63FF”,
+title: “Ship a Fullstack App That Tells Your Story”, timeline: “Weeks 1–5”,
+pillars: {
+S: “Complete and deploy a fullstack app using your MERN stack (Per Scholas) or Java (Generation USA). The app should include a REST API layer, user auth, and ideally simulate a real support use-case — like an API health dashboard, ticket tracker, or webhook log viewer.”,
+M: “Live deployed app (Vercel + Railway or Render), GitHub repo with clean commits, and a 90-second Loom demo video you can drop into applications and outreach messages.”,
+A: “You have MERN, Java fullstack, and JavaScript certifications — plus real deployment and debugging experience from NIA Entertainment. Scope it small: an MVP in 3–4 weeks is the goal, not a perfect product.”,
+R: “A support-themed project (e.g. API monitor, error log dashboard) directly mirrors the TSE role. It shows hiring managers you understand the problem space — not just the tech stack.”,
+T: “Live URL and Loom walkthrough ready by end of Week 5.”,
+},
+},
+{
+id: 3, emoji: “🚀”, category: “Land the Job”, color: “#FF6B6B”,
+title: “Apply, Network & Land a TSE Offer”, timeline: “Weeks 1–8”,
+pillars: {
+S: “Update your resume headline and LinkedIn summary to lead with your GE Aerospace API intern experience and Apigee/GCP skills — these are rare for bootcamp grads and immediately credible. Apply to 8–10 TSE, Customer Success Engineer, or Implementation Specialist roles per week. Send 3 warm outreach messages weekly to TSEs and hiring managers at SaaS companies on LinkedIn.”,
+M: “Resume updated by Day 2. 8–10 applications/week tracked in a spreadsheet. Target: 3–5 recruiter responses and 2 first-round interviews by Week 6. At least 2 conversations per week from outreach.”,
+A: “Your GE Aerospace internship + ServiceNow + Postman + Apigee stack puts you ahead of most bootcamp applicants. Prioritize SaaS companies using GCP or API-heavy products (Twilio, Stripe, Salesforce ecosystem) where your Apigee background is directly relevant.”,
+R: “The 1–2 month timeline is tight but very doable given your actual experience. Most bootcamp grads don’t have real API infrastructure internships — Edwin does. The resume just needs to lead with that signal more aggressively.”,
+T: “Resume + LinkedIn updated by end of Week 1. First offer or active negotiation by end of Week 8.”,
+},
+},
+];
+
+const pillarMeta = {
+S: { label: “Specific”,    desc: “What exactly will be done”,  color: “#00C9A7” },
+M: { label: “Measurable”,  desc: “How success is tracked”,     color: “#6C63FF” },
+A: { label: “Achievable”,  desc: “Why this is realistic”,      color: “#FF6B6B” },
+R: { label: “Relevant”,    desc: “Why this matters”,           color: “#FFB347” },
+T: { label: “Time-bound”,  desc: “The deadline”,               color: “#38BDF8” },
+};
+const PILLARS = [“S”,“M”,“A”,“R”,“T”];
+
+const strengths = [
+{ label: “Apigee / GCP”,        note: “Rare for bootcamp grads” },
+{ label: “GE Aerospace Intern”, note: “Real enterprise API work” },
+{ label: “ServiceNow”,          note: “Used in TSE orgs daily”  },
+{ label: “MERN + Java”,         note: “Dual fullstack capability”},
+{ label: “Postman + OAuth”,     note: “Core TSE tooling”        },
+];
+
+function App() {
+const [activeGoal, setActiveGoal] = React.useState(0);
+const [activePillar, setActivePillar] = React.useState(“S”);
+const goal = goals[activeGoal];
+const pm = pillarMeta[activePillar];
+const pillarIdx = PILLARS.indexOf(activePillar);
+
+return (
+<div style={{ minHeight:“100vh”, padding:“36px 16px” }}>
+
+```
+  {/* Header */}
+  <div style={{ textAlign:"center", marginBottom:"36px" }}>
+    <div style={{ fontFamily:"'Courier New',monospace", fontSize:"10px", letterSpacing:"4px", color:"#555", textTransform:"uppercase", marginBottom:"10px" }}>
+      Personalized for Edwin Allen
+    </div>
+    <h1 style={{ fontSize:"clamp(26px,6vw,44px)", fontWeight:"normal", letterSpacing:"-1px", marginBottom:"6px" }}>
+      S.M.A.R.T. Goals
+    </h1>
+    <div style={{ fontSize:"13px", color:"#666", fontStyle:"italic", marginBottom:"14px" }}>
+      Technical Support Engineer · API Support · SaaS Platforms
+    </div>
+    <div style={{ display:"flex", justifyContent:"center", gap:"6px", flexWrap:"wrap" }}>
+      {PILLARS.map(k => (
+        <span key={k} style={{ background:`${pillarMeta[k].color}15`, border:`1px solid ${pillarMeta[k].color}35`, color:pillarMeta[k].color, padding:"3px 10px", borderRadius:"20px", fontSize:"10px", fontFamily:"'Courier New',monospace" }}>
+          {pillarMeta[k].label}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  {/* Strengths */}
+  <div style={{ maxWidth:"760px", margin:"0 auto 24px", padding:"16px 18px", background:"#0D1F1A", border:"1px solid #00C9A730", borderRadius:"12px" }}>
+    <div style={{ fontSize:"10px", fontFamily:"'Courier New',monospace", letterSpacing:"3px", color:"#00C9A7", textTransform:"uppercase", marginBottom:"12px" }}>
+      ⚡ Edwin's Competitive Edge
+    </div>
+    <div style={{ display:"flex", gap:"8px", flexWrap:"wrap" }}>
+      {strengths.map((s,i) => (
+        <div key={i} style={{ background:"#0A0A0F", border:"1px solid #1E1E2E", borderRadius:"8px", padding:"8px 12px" }}>
+          <div style={{ fontSize:"12px", color:"#E8E4DC", marginBottom:"2px" }}>{s.label}</div>
+          <div style={{ fontSize:"10px", color:"#555", fontFamily:"'Courier New',monospace" }}>{s.note}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Goal Selector */}
+  <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(190px,1fr))", gap:"10px", maxWidth:"760px", margin:"0 auto 24px" }}>
+    {goals.map((g,i) => (
+      <button key={g.id} onClick={() => { setActiveGoal(i); setActivePillar("S"); }} style={{
+        background: activeGoal===i ? `${g.color}15` : "#10101A",
+        border:`1px solid ${activeGoal===i ? g.color : "#1E1E2E"}`,
+        color: activeGoal===i ? g.color : "#666",
+        padding:"16px", borderRadius:"12px", cursor:"pointer", textAlign:"left",
+        boxShadow: activeGoal===i ? `0 0 24px ${g.color}15` : "none", transition:"all 0.2s",
+      }}>
+        <div style={{ fontSize:"22px", marginBottom:"6px" }}>{g.emoji}</div>
+        <div style={{ fontFamily:"'Courier New',monospace", fontSize:"9px", letterSpacing:"2px", textTransform:"uppercase", marginBottom:"4px", color: activeGoal===i ? g.color : "#444" }}>Goal {i+1}</div>
+        <div style={{ fontSize:"13px", color: activeGoal===i ? "#E8E4DC" : "#777", lineHeight:1.3 }}>{g.category}</div>
+      </button>
+    ))}
+  </div>
+
+  {/* Main Card */}
+  <div style={{ maxWidth:"760px", margin:"0 auto", background:"#10101A", border:`1px solid ${goal.color}30`, borderRadius:"16px", overflow:"hidden", boxShadow:`0 0 60px ${goal.color}08` }}>
+
+    {/* Card Header */}
+    <div style={{ padding:"22px 28px", borderBottom:"1px solid #1E1E2E", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"10px" }}>
+      <h2 style={{ fontSize:"17px", fontWeight:"normal", margin:0 }}>{goal.emoji} {goal.title}</h2>
+      <div style={{ background:`${goal.color}15`, border:`1px solid ${goal.color}30`, color:goal.color, padding:"4px 12px", borderRadius:"20px", fontSize:"11px", fontFamily:"'Courier New',monospace", whiteSpace:"nowrap" }}>
+        ⏱ {goal.timeline}
+      </div>
+    </div>
+
+    {/* Pillar Tabs */}
+    <div style={{ display:"flex", borderBottom:"1px solid #1E1E2E" }}>
+      {PILLARS.map(k => (
+        <button key={k} onClick={() => setActivePillar(k)} style={{
+          flex:1, background:"transparent", border:"none",
+          borderBottom: activePillar===k ? `2px solid ${pillarMeta[k].color}` : "2px solid transparent",
+          color: activePillar===k ? pillarMeta[k].color : "#444",
+          padding:"13px 4px", cursor:"pointer", fontSize:"14px", fontWeight:"bold",
+          fontFamily:"'Courier New',monospace", transition:"all 0.18s",
+        }}>{k}</button>
+      ))}
+    </div>
+
+    {/* Pillar Content */}
+    <div style={{ padding:"26px 28px" }}>
+      <div style={{ display:"flex", alignItems:"center", gap:"12px", marginBottom:"14px" }}>
+        <div style={{ width:"32px", height:"32px", borderRadius:"8px", background:`${pm.color}18`, border:`1px solid ${pm.color}40`, display:"flex", alignItems:"center", justifyContent:"center", fontSize:"13px", fontWeight:"bold", color:pm.color, fontFamily:"'Courier New',monospace" }}>
+          {activePillar}
+        </div>
+        <div>
+          <div style={{ fontSize:"15px", fontWeight:"bold" }}>{pm.label}</div>
+          <div style={{ fontSize:"11px", color:"#555", fontFamily:"'Courier New',monospace" }}>{pm.desc}</div>
+        </div>
+      </div>
+      <p style={{ fontSize:"14px", lineHeight:"1.85", color:"#C0BDB5", margin:0, padding:"18px", background:"#0A0A0F", borderRadius:"10px", border:"1px solid #1A1A25" }}>
+        {goal.pillars[activePillar]}
+      </p>
+      <div style={{ display:"flex", justifyContent:"space-between", marginTop:"18px" }}>
+        <button onClick={() => pillarIdx > 0 && setActivePillar(PILLARS[pillarIdx-1])}
+          style={{ background:"transparent", border:`1px solid ${pillarIdx===0?"#111":"#2A2A35"}`, color:pillarIdx===0?"#222":"#777", padding:"6px 13px", borderRadius:"6px", cursor:pillarIdx===0?"default":"pointer", fontSize:"11px", fontFamily:"'Courier New',monospace" }}>
+          ← {pillarIdx > 0 ? pillarMeta[PILLARS[pillarIdx-1]].label : ""}
+        </button>
+        <button onClick={() => pillarIdx < 4 && setActivePillar(PILLARS[pillarIdx+1])}
+          style={{ background:"transparent", border:`1px solid ${pillarIdx===4?"#111":"#2A2A35"}`, color:pillarIdx===4?"#222":"#777", padding:"6px 13px", borderRadius:"6px", cursor:pillarIdx===4?"default":"pointer", fontSize:"11px", fontFamily:"'Courier New',monospace" }}>
+          {pillarIdx < 4 ? pillarMeta[PILLARS[pillarIdx+1]].label : ""} →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {/* Timeline */}
+  <div style={{ maxWidth:"760px", margin:"20px auto 0", padding:"18px 22px", background:"#10101A", border:"1px solid #1E1E2E", borderRadius:"12px" }}>
+    <div style={{ fontSize:"9px", fontFamily:"'Courier New',monospace", letterSpacing:"3px", color:"#444", textTransform:"uppercase", marginBottom:"12px" }}>8-Week Snapshot</div>
+    <div style={{ display:"flex" }}>
+      {[
+        { week:"Wk 1",   label:"Resume + LinkedIn", color:"#FF6B6B" },
+        { week:"Wk 1–3", label:"GitHub API Projects", color:"#00C9A7" },
+        { week:"Wk 2–5", label:"Ship Fullstack App",  color:"#6C63FF" },
+        { week:"Wk 2–8", label:"Apply + Outreach",    color:"#FFB347" },
+        { week:"Wk 6–8", label:"Interviews 🎯",       color:"#38BDF8" },
+      ].map((item,i) => (
+        <div key={i} style={{ flex:1, borderLeft:i===0?"none":"1px solid #1E1E2E", padding:i===0?"0 8px 0 0":"0 8px" }}>
+          <div style={{ fontSize:"9px", fontFamily:"'Courier New',monospace", color:item.color, marginBottom:"3px" }}>{item.week}</div>
+          <div style={{ fontSize:"10px", color:"#666", lineHeight:1.4 }}>{item.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div style={{ textAlign:"center", marginTop:"24px", fontSize:"10px", color:"#2A2A2A", fontFamily:"'Courier New',monospace" }}>
+    Edwin Allen · Bronx, NY · TSE Candidate · 2026
+  </div>
+</div>
+```
+
+);
+}
+
+ReactDOM.createRoot(document.getElementById(“root”)).render(<App />);
+</script>
+
+</body>
+</html>
